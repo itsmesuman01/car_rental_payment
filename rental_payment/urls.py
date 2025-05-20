@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .views import InitiatePaymentView, PaymentSuccessView, PaymentFailureView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/payment/initiate/', InitiatePaymentView.as_view(), name='initiate_payment'),
+    path('api/payment/success/', PaymentSuccessView.as_view(), name='payment_success'),
+    path('api/payment/failure/', PaymentFailureView.as_view(), name='payment_failure'),
 ]
